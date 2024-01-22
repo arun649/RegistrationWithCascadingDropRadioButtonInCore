@@ -1,0 +1,40 @@
+﻿@model IEnumerable<RegistrationnApplication.Models.Country>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 style="text-align:left">Country List</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+
+<table data-toggle="table" data-pagination="true" data-search="true" class="table menu-table">
+
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a asp-action="Edit" asp-route-id="@item.CountryId" class="btn btn-secondary">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.CountryId" class="btn btn-info">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.CountryId" class="btn btn-danger">Delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
